@@ -1,47 +1,25 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
 
-        /* *Создаю массив
-         * Добавляю значение в массив
-         * Создаю и инициализирую рандом
-         * Использую ветвление
-         * Кидаю эксепшн в ветвление
-         * Используем цикл
-         * В цикле прописываю сортировку массива
-         * Выхожу из цикла*/
+        int[] a = {6, 3, 7, 9, 0, 1, 4, 2, 5, 8};
+        int b;
 
-        ArrayList<Integer> arrayList = new ArrayList<>();
+        boolean isSorted = false;
 
-        arrayList.add(9);
-        arrayList.add(1);
-        arrayList.add(6);
-        arrayList.add(5);
-        arrayList.add(7);
-        arrayList.add(3);
-        arrayList.add(2);
-        arrayList.add(4);
-        arrayList.add(8);
+        while (!isSorted) {
+            isSorted = true;
+            for (int i = 0; i < a.length - 1; i++) {
+                if (a[i] < a[i + 1]) {
+                    isSorted = false;
 
-        Random rnd = new Random();
-        Integer j = rnd.nextInt();
-
-        if (j > 1000000) {
-
-            System.out.println(j);
-            throw new MyIndexOfBoundException("Random Integer smaller than 1000000");
-
+                    b = a[i];
+                    a[i] = a[i + 1];
+                    a[i + 1] = b;
+                }
+            }
         }
-
-        for (Integer i = 1000000; i > j; i++) {
-            Collections.sort(arrayList);
-            System.out.println(arrayList);
-            break;
-
-
-        }
+        System.out.println(Arrays.toString(a));
     }
 }
